@@ -5,7 +5,7 @@ const int DHTPIN = 2;       //Đọc dữ liệu từ DHT11 ở chân 2 trên m�
 const int DHTTYPE = DHT11;  //Khai báo loại cảm biến, có 2 loại là DHT11 và DHT22
 int quangTro = A0;
 int giatri = 0;
-unsigned long timerDelay = 5000;
+unsigned long timerDelay = 10000;
 unsigned long lastTime = 0;
 
 String server = "http://192.168.100.3:8080/addinfo";
@@ -27,7 +27,7 @@ void loop() {
     
     giatri = analogRead(quangTro);
     String sendDataToServer = server + "*" + "temp="+ t + "&humi=" + h + "&ldr=" + giatri;
-    if( giatri > 800){
+    if( giatri > 700){
       Serial.println(sendDataToServer);
     }
     
